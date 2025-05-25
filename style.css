@@ -1,0 +1,31 @@
+body {
+  background-color: #f0f4f1;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  color: #356;
+  text-align: center;
+  margin: 0;
+  padding: 40px;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 20px 0;
+}
+
+a {
+  color: #009acc;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+div {
+  margin-top: 20px;
+}
