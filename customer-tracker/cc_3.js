@@ -23,4 +23,11 @@ customers.push({
 customers[1].email = "Joe.mommington@icloud.com";
 customers[2].purchases.push("Charger");
 
+customers.forEach(customer => {
+  console.log(`Name: ${customer.name}`);
+  console.log(`Email: ${customer.email}`);
+  console.log(`Total Purchases: ${customer.purchases.length}`);
+  console.log('---');
+});
+
 console.log(customers);
