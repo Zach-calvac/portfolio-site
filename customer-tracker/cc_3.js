@@ -20,5 +20,7 @@ customers.push({
   email: "danaUFC@gmail.com",
   purchases: ["Microphone"]
 });
+customers[1].email = "Joe.mommington@icloud.com";
+customers[2].purchases.push("Charger");
 
 console.log(customers);
