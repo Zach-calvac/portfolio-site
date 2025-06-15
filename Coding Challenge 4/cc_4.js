@@ -69,3 +69,33 @@ if (customerType === "student") {
 
 console.log(`Customer Type: ${customerType}`);
 console.log(`Final Total: $${total.toFixed(2)}`);
+
+const customerTypes = ["regular", "student", "senior"];
+
+for (let i = 1; i <= 3; i++) {
+  let customerType = customerTypes[Math.floor(Math.random() * customerTypes.length)];
+  let total = 0;
+  let cartIndexes = new Set();
+
+   // random cart selection
+  while (cartIndexes.size < Math.floor(Math.random() * 2) + 2) {
+    cartIndexes.add(Math.floor(Math.random() * products.length));
+  }
+
+  for (const index of cartIndexes) {
+    const product = products[index];
+    if (product.inventoryCount > 0) {
+      total += product.price;
+      product.inventoryCount--;
+    } else {
+      console.log(`Product out of stock: ${product.name}`);
+    }
+  }
+
+  console.log(`\nCustomer ${i} (${customerType}) - Total: $${total.toFixed(2)}`);
+}
+
+console.log("\nRemaining Inventory:");
+for (const product of products) {
+  console.log(`${product.name}: ${product.inventoryCount} left`);
+}
