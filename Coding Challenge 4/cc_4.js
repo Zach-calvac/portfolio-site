@@ -106,3 +106,12 @@ console.log("\nDetails of First Product After Discount:");
 for (const key in firstProduct) {
   console.log(`${key}: ${firstProduct[key]}`);
 }
+
+console.log("\nAll Product Info After Inventory Update:");
+for (const product of products) {
+  console.log(`\nProduct: ${product.name}`);
+  
+  for (const [key, value] of Object.entries(product)) {
+    console.log(`${key}: ${value}`);
+  }
+}
