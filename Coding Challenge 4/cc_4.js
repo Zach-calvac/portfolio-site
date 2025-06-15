@@ -99,3 +99,10 @@ console.log("\nRemaining Inventory:");
 for (const product of products) {
   console.log(`${product.name}: ${product.inventoryCount} left`);
 }
+
+const firstProduct = products[0];
+
+console.log("\nDetails of First Product After Discount:");
+for (const key in firstProduct) {
+  console.log(`${key}: ${firstProduct[key]}`);
+}
