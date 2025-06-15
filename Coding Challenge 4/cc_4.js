@@ -53,3 +53,19 @@ for (const product of products)
 {
   console.log(`${product.name} - ${product.category} - $${product.price.toFixed(2)} - In Stock: ${product.inventoryCount}`);
 }
+
+let customerType = "student"; 
+
+let total = 0;
+for (const product of products) {
+  total += product.price;
+}
+
+if (customerType === "student") {
+  total *= 0.95; 
+} else if (customerType === "senior") {
+  total *= 0.93; 
+} 
+
+console.log(`Customer Type: ${customerType}`);
+console.log(`Final Total: $${total.toFixed(2)}`);
