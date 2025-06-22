@@ -23,6 +23,9 @@ const employees = [
 
 console.log(employees);
 
+const grossPay = calculateBasePay(employee.hourlyRate, employee.hoursWorked) +
+calculateOvertimePay(employee.hourlyRate, employee.hoursWorked);
+
 function calculateBasePay(rate, hours) {
   const regularHours = Math.min(hours, 40);
   return rate * regularHours;
@@ -31,4 +34,9 @@ function calculateBasePay(rate, hours) {
 function calculateOvertimePay(rate, hours) {
   const overtimeHours = Math.max(0, hours - 40);
   return overtimeHours * rate * 1.5;
+}
+
+function calculateTaxes(grossPay) {
+  const taxRate = 0.15;
+  return grossPay * taxRate;
 }
