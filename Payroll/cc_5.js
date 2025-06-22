@@ -56,3 +56,8 @@ function processPayroll(employee) {
     netPay: netPay
   };
 }
+
+for (const employee of employees) {
+  const payroll = processPayroll(employee);
+  console.log(payroll);
+}
