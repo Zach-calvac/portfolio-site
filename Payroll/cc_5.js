@@ -59,5 +59,9 @@ function processPayroll(employee) {
 
 for (const employee of employees) {
   const payroll = processPayroll(employee);
-  console.log(payroll);
+  console.log(`Payroll for ${payroll.name}`);
+  console.log(`  Base Pay: $${payroll.basePay.toFixed(2)}`);
+  console.log(`  Overtime Pay: $${payroll.overtimePay.toFixed(2)}`);
+  console.log(`  Gross Pay: $${payroll.grossPay.toFixed(2)}`);
+  console.log(`  Net Pay: $${payroll.netPay.toFixed(2)}`);
 }
