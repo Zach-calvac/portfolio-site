@@ -66,3 +66,19 @@ console.log(emp3.describe());
 
 console.log(mgr1.describe());
 console.log(mgr2.describe());
+
+class Company {
+  constructor() {
+    this.employees = [];
+  }
+
+  addEmployee(employee) {
+    this.employees.push(employee);
+  }
+
+  listEmployees() {
+    this.employees.forEach(emp => {
+      console.log(emp.describe());
+    });
+  }
+}
