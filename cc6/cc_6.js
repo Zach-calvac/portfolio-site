@@ -120,3 +120,17 @@ class Company {
     });
   }
 }
+
+const myCompany = new Company();
+
+const emp1 = new Employee("BROOOOOOOOOKS Koepka", "Marketing");
+const emp2 = new Employee("Justin Thomas", "Sales");
+const mgr1 = new Manager("Jordan Spieth", "Engineering");
+const mgr2 = new Manager("John Cena", "Finance");
+
+myCompany.addEmployee(emp1);
+myCompany.addEmployee(emp2);
+myCompany.addEmployee(mgr1);
+myCompany.addEmployee(mgr2);
+
+myCompany.listEmployees();
