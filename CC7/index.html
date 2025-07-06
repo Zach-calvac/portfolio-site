@@ -67,7 +67,13 @@
     <section>
       <h2>Welcome to Zach's Goods and Stuff</h2>
       <p>We provide Goods and Stuff!</p>
-      <h2>Browse Goods and Stuff today!</h2>
+      <h2 id="cta-headline">Get Stuff or Goods now!</h2>
+
+      <form id="cta-form">
+      <label for="new-headline">Getting stuff.</label><br>
+      <input type="text" id="new-headline" placeholder="Enter new CTA..." required>
+      <button type="submit">And Goods!</button>
+    </form>
     </section>
   </main>
 
@@ -85,6 +91,15 @@
   <footer>
     <p>Contact us at: Calvaccaz@usf.edu </p>
   </footer>
+  
+  <script>
+  document.getElementById("cta-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const newHeadline = document.getElementById("new-headline").value;
+    document.getElementById("cta-headline").textContent = newHeadline;
+    this.reset();
+  });
+</script>
 
 </body>
 </html>
