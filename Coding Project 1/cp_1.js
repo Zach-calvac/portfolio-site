@@ -52,6 +52,14 @@ comments.addEventListener("input", () => {
   charCount.textContent = `Characters: ${comments.value.length}`;
 });
 
+document.body.addEventListener("click", (e) => {
+  if (form.contains(e.target)) {
+    return;
+  }
+
+  e.stopPropagation();
+});
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
