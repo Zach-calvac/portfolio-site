@@ -40,3 +40,32 @@ function handleError(error) {
 }
 
 fetchProductsAsync();
+
+function displayProducts(products) {
+  const container = document.getElementById('product-container');
+  container.innerHTML = ''; 
+
+  products.slice(0, 5).forEach((product) => {
+    const { name, price, image } = product.fields;
+    const imgUrl = image[0].url;
+
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
+
+    const img = document.createElement('img');
+    img.src = imgUrl;
+    img.alt = name;
+
+    const title = document.createElement('h3');
+    title.textContent = name;
+
+    const priceTag = document.createElement('p');
+    priceTag.textContent = `$${(price / 100).toFixed(2)}`;
+
+    productCard.appendChild(img);
+    productCard.appendChild(title);
+    productCard.appendChild(priceTag);
+
+    container.appendChild(productCard);
+  });
+}
