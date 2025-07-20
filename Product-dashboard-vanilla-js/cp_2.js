@@ -8,18 +8,18 @@ function fetchProductsThen() {
     })
     .then((products) => {
       products.forEach((product) => {
-        console.log(product.fields.name);
+        const name = product?.fields?.name || 'Unnamed Product';
+        console.log(name);
       });
     })
     .catch((error) => {
-      console.error('Fetch error:', error);
+      console.error('Fetch error (then):', error);
     });
 }
 
-fetchProductsThen();
-
 async function fetchProductsAsync() {
   try {
+    showLoading();
     const response = await fetch('https://www.course-api.com/javascript-store-products');
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -28,44 +28,46 @@ async function fetchProductsAsync() {
     displayProducts(products);
   } catch (error) {
     handleError(error);
+  } finally {
+    hideLoading();
   }
 }
-
-function displayProducts(products) {
-  console.log('Displaying products:', products);
-}
-
-function handleError(error) {
-  console.error('Error fetching products:', error);
-}
-
-fetchProductsAsync();
 
 function displayProducts(products) {
   const container = document.getElementById('product-container');
   container.innerHTML = ''; 
 
-  products.slice(0, 5).forEach((product) => {
-    const { name, price, image } = product.fields;
-    const imgUrl = image[0].url;
+  const firstFive = products.slice(0, 5);
+  firstFive.forEach((product) => {
+    const { name = 'Unnamed', price = 0, image = [] } = product.fields;
+    const imgUrl = image[0]?.url || 'https://via.placeholder.com/150';
 
-    const productCard = document.createElement('div');
-    productCard.classList.add('product-card');
+    const card = document.createElement('div');
+    card.classList.add('product-card');
 
-    const img = document.createElement('img');
-    img.src = imgUrl;
-    img.alt = name;
+    card.innerHTML = `
+      <img src="${imgUrl}" alt="${name}" />
+      <h3>${name}</h3>
+      <p>$${(price / 100).toFixed(2)}</p>
+    `;
 
-    const title = document.createElement('h3');
-    title.textContent = name;
-
-    const priceTag = document.createElement('p');
-    priceTag.textContent = `$${(price / 100).toFixed(2)}`;
-
-    productCard.appendChild(img);
-    productCard.appendChild(title);
-    productCard.appendChild(priceTag);
-
-    container.appendChild(productCard);
+    container.appendChild(card);
   });
 }
+
+function handleError(error) {
+  const container = document.getElementById('product-container');
+  container.innerHTML = `<p class="error">Failed to load products: ${error.message}</p>`;
+  console.error('Error fetching products:', error);
+}
+
+function showLoading() {
+  const container = document.getElementById('product-container');
+  container.innerHTML = `<p class="loading">Loading products...</p>`;
+}
+
+function hideLoading() {
+}
+
+fetchProductsThen();  
+fetchProductsAsync();  
