@@ -56,13 +56,12 @@ function displayProducts(products) {
 }
 
 function handleError(error) {
-  const container = document.getElementById('product-container');
-  container.innerHTML = `<p class="error">Failed to load products: ${error.message}</p>`;
   console.error(`An error occurred: ${error.message}`);
+  
   const container = document.getElementById('product-container');
   if (container) {
     container.innerHTML = `<p class="error">An error occurred: ${error.message}</p>`;
-
+  }
 }
 
 function showLoading() {
